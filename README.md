@@ -213,6 +213,7 @@ Create review
 
 **Request**
 - Header: `Authorization: Bearer ...`
+> The score can only be an integer, with a range from 1 to 5
 ```json
 {
     "restaurant": "...",
@@ -226,7 +227,7 @@ Create review
 ```json
 {
     "id": "...",
-    "score": 3, //1~5, integer
+    "score": 3,
     "comment": "review comment",
     "created_at": "2024-06-03T13:29:03.738182Z",
     "updated_at": "2024-06-03T13:29:03.738194Z",
@@ -256,7 +257,7 @@ Get reviews
     "results": [
         {
             "id": "...",
-            "score": 3, //1~5, integer
+            "score": 3,
             "comment": "review comment",
             "created_at": "2024-06-03T13:29:03.738182Z",
             "updated_at": "2024-06-03T13:29:03.738194Z",
