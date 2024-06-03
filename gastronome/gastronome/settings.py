@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,12 +33,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'restaurants.apps.RestaurantsConfig',
+    'reviews.apps.ReviewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'django_filters',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +76,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'gastronome.wsgi.application'
+
+AUTH_USER_MODEL = 'users.AppUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'PAGE_SIZE': os.environ.get('PAGE_SIZE', 10),
+}
 
 
 # Database
