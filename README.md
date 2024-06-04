@@ -1,4 +1,4 @@
-# cycraft-backend
+# gastronome-backend
 A restaurant review system with only backend APIs.
 
 ## Getting Started
